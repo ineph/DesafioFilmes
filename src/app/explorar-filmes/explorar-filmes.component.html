@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let filme of filmes">
+    <a [routerLink]="'/filme/'+filme.id">{{filme.title}} ({{filme.release_date}})<br>
+      <img [src]="'https://image.tmdb.org/t/p/w500'+filme.backdrop_path" [alt]="filme.title">
+    </a>
+  </li>
+</ul>

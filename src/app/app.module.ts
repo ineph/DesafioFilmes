@@ -1,0 +1,30 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { ButtonsModule } from 'ngx-bootstrap';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ExplorarFilmesComponent } from './explorar-filmes/explorar-filmes.component';
+import { ExplorarSeriesComponent } from './explorar-series/explorar-series.component';
+import { FilmeComponent } from './filme/filme.component';
+import { SerieComponent } from './serie/serie.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    ExplorarFilmesComponent,
+    ExplorarSeriesComponent,
+    FilmeComponent,
+    SerieComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ButtonsModule.forRoot()
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
