@@ -9,6 +9,8 @@ import { ExplorarFilmesComponent } from './explorar-filmes/explorar-filmes.compo
 import { ExplorarSeriesComponent } from './explorar-series/explorar-series.component';
 import { FilmeComponent } from './filme/filme.component';
 import { SerieComponent } from './serie/serie.component';
+import { MenuComponent } from './shared/components/menu/menu.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,16 @@ import { SerieComponent } from './serie/serie.component';
     ExplorarFilmesComponent,
     ExplorarSeriesComponent,
     FilmeComponent,
-    SerieComponent
+    SerieComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

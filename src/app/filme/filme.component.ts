@@ -9,11 +9,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FilmeComponent implements OnInit {
 
-  filme: {};
+  filme: [];
 
   constructor(
     private endpoint: EndpointService,
     private rotaAtiva: ActivatedRoute) {
+
       this.rotaAtiva.params.subscribe(rota => {
         this.endpoint.getFilme(rota.id).subscribe(
           res => {

@@ -9,6 +9,11 @@ export class EndpointService {
 
   constructor(private http: HttpClient) {}
 
+  getPesquisar(conteudo) {
+    return this.http.get<any>(
+      `${environment.apiUrl}search/movie?api_key=${environment.apiToken}&language=${this.idioma}&query=${conteudo}`);
+  }
+
   getDescobirFilmes() {
     return this.http.get<any>(`${environment.apiUrl}discover/movie?api_key=${environment.apiToken}&language=${this.idioma}`);
   }

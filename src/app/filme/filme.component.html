@@ -1,9 +1,9 @@
-<h1>{{filme.title}}</h1>
-<small>{{filme.tagline ? filme.tagline : ''}}</small><br>
+<h1>{{filme ? filme.title : ''}}</h1>
+<small>{{filme ? (filme.tagline ? filme.tagline : ''): ''}}</small><br>
 <br>
-Popularidade: {{filme.popularity}}<br>
-Nota: {{filme.vote_average}}<br>
-Avaliado {{filme.vote_count}} Vezes<br>
+Popularidade: {{filme ? filme.popularity : ''}}<br>
+Nota: {{filme ? filme.vote_average : ''}}<br>
+Avaliado {{filme ? filme.vote_count : ''}} Vezes<br>
 <br>
-Resumo: {{filme.overview}}<br>
-<img [src]="'https://image.tmdb.org/t/p/w500' + filme.poster_path" [alt]="filme.title">
+Resumo: {{filme ? filme.overview : ''}}<br>
+<img [src]="'https://image.tmdb.org/t/p/w500' + (filme ? filme.poster_path : '')" [alt]="(filme ? filme.title : '')">
