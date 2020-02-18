@@ -12,11 +12,11 @@ export class FilmeComponent implements OnInit {
   filme: [];
 
   constructor(
-    private endpoint: EndpointService,
-    private rotaAtiva: ActivatedRoute) {
+    endpoint: EndpointService,
+    rotaAtiva: ActivatedRoute) {
 
-      this.rotaAtiva.params.subscribe(rota => {
-        this.endpoint.getFilme(rota.id).subscribe(
+      rotaAtiva.params.subscribe(rota => {
+        endpoint.getFilme(rota.id).subscribe(
           res => {
             console.log(this.filme = res);
           });

@@ -1,29 +1,42 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class EndpointService {
 
-  idioma = 'pt-BR';
+  idioma = environment.idiomaPadrao;
+  token = environment.apiToken;
+
+  parametros = new HttpParams()
+  .set('api_key', this.token)
+  .set('language', this.idioma);
+
+  formatarParametros(conteudo) {
+    return this.parametros.set('query', conteudo);
+  }
 
   constructor(private http: HttpClient) {}
 
-  getPesquisar(conteudo) {
+  getPesquisar(pesquisa) {
     return this.http.get<any>(
-      `${environment.apiUrl}search/movie?api_key=${environment.apiToken}&language=${this.idioma}&query=${conteudo}`);
+      `${environment.apiUrl}search/movie`, {params: this.formatarParametros(pesquisa)});
   }
 
   getDescobirFilmes() {
-    return this.http.get<any>(`${environment.apiUrl}discover/movie?api_key=${environment.apiToken}&language=${this.idioma}`);
+    return this.http.get<any>(`${environment.apiUrl}discover/movie`, {params: this.parametros});
   }
 
   getDescobrirSeries() {
-    return this.http.get<any>(`${environment.apiUrl}discover/tv?api_key=${environment.apiToken}&language=${this.idioma}`);
+    return this.http.get<any>(`${environment.apiUrl}discover/tv`, {params: this.parametros});
   }
 
   getFilme(id) {
-    return this.http.get<any>(`${environment.apiUrl}movie/${id}?api_key=${environment.apiToken}&language=${this.idioma}`);
+    return this.http.get<any>(`${environment.apiUrl}movie/${id}`, {params: this.parametros});
+  }
+
+  getSerie(id) {
+    return this.http.get<any>(`${environment.apiUrl}tv/${id}`, {params: this.parametros});
   }
 
 }

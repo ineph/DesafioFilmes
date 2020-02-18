@@ -11,6 +11,8 @@ import { FilmeComponent } from './filme/filme.component';
 import { SerieComponent } from './serie/serie.component';
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     ButtonsModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BsDropdownModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

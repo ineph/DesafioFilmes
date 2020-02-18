@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'https://api.themoviedb.org/3/',
-  apiToken: '51728253534d318d47556eba3cf79173'
+  apiToken: '51728253534d318d47556eba3cf79173',
+  idiomaPadrao: 'pt-BR'
 };
 
 /*

@@ -1,5 +1,7 @@
-<ul>
+<ul class="list-unstyled">
   <li *ngFor="let serie of series">
-    {{serie.name}}
+    <a [routerLink]="'/serie/'+serie.id">{{serie.name}}<br>
+      <img [src]="'https://image.tmdb.org/t/p/w500'+serie.backdrop_path" [alt]="serie.name">
+    </a>
   </li>
 </ul>
