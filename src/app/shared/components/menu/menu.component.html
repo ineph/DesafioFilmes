@@ -1,36 +1,44 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="">DesafioFilmes</a>
+    <div class="col-sm-3">
+      <a class="navbar-brand" href="">DesafioFilmes</a>
 
-    <div class="btn-group" dropdown>
-      <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-        aria-controls="dropdown-basic">
-        Explorar <span class="caret"></span>
-      </button>
-      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-        <li role="menuitem"><a class="dropdown-item" routerLink="/explorar/filmes">Filmes</a></li>
-        <li role="menuitem"><a class="dropdown-item" routerLink="/explorar/series">Series</a></li>
-      </ul>
+      <div class="btn-group" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+          aria-controls="dropdown-basic">
+          Explorar <span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+          <li role="menuitem"><a class="dropdown-item" routerLink="/explorar/filmes">Filmes</a></li>
+          <li role="menuitem"><a class="dropdown-item" routerLink="/explorar/series">Series</a></li>
+        </ul>
+      </div>
     </div>
 
-    <select (change)="selecaoPesquisa($event.target.value)">
-      <option value="">Pesquisar por...</option>
-      <option value="serie">Series</option>
-      <option value="filme">Filmes</option>
-    </select>
+    <div class="col-sm-3">
+      <div class="pesquisa">
+        <div class="pesquisa-form">
+          <input class="form-control" type="text" placeholder="Pesquisar..."
+            (keyup)="pesquisar($event.target.value, tipoPesquisa)">
+          <ul class="resultado-pesquisa list-group dropdown" (click)="resultadosPesquisa = unsigned"
+            (mouseleave)=" resultadosPesquisa = unsigned">
+            <li class="list-group-item" *ngFor="let resultado of resultadosPesquisa">
+              <a [routerLink]="(tipoPesquisa === 'serie' ? '/serie/' : '/filme/') + resultado.id">
+                {{tipoPesquisa === 'serie' ? resultado.name : resultado.title}}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>    
 
-    <div style="position: relative;">
-      <input class="form-control" type="text" placeholder="Pesquisar..."
-        (keyup)="pesquisar($event.target.value, tipoPesquisa)">
-      <ul class="list-group dropdown" style="position: absolute;" (click)="resultadosPesquisa = unsigned">
-        <li class="list-group-item" *ngFor="let resultado of resultadosPesquisa">
-          <a
-            [routerLink]="(tipoPesquisa === 'serie' ? '/serie/' : '/filme/') + resultado.id">
-            {{tipoPesquisa === 'serie' ? resultado.name : resultado.title}}
-          </a>
-        </li>
-      </ul>
+      <div>
+        <select class="tipo-pesquisa browser-default custom-select" (change)="selecaoPesquisa($event.target.value)">
+          <option value="" disabled selected>em...</option>
+          <option value="serie">Series</option>
+          <option value="filme">Filmes</option>
+        </select>
+      </div>
     </div>
+
   </div>
-
 </nav>

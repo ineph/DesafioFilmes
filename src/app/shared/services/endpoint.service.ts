@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
+import { ExplorarFilmesInterface } from 'src/app/models/explorar.filmes';
+import { ExplorarSerieInterface } from 'src/app/models/explorar.series';
+import { FilmeInterface } from 'src/app/models/filme.interface';
+import { SerieInterface } from 'src/app/models/serie.interface';
+
 @Injectable({providedIn: 'root'})
 export class EndpointService {
 
@@ -28,20 +33,20 @@ export class EndpointService {
       `${environment.apiUrl}search/tv`, {params: this.formatarParametros(pesquisa)});
   }
 
-  getDescobirFilmes() {
-    return this.http.get<any>(`${environment.apiUrl}discover/movie`, {params: this.parametros});
+  getExplorarFilmes() {
+    return this.http.get<ExplorarFilmesInterface>(`${environment.apiUrl}discover/movie`, {params: this.parametros});
   }
 
-  getDescobrirSeries() {
-    return this.http.get<any>(`${environment.apiUrl}discover/tv`, {params: this.parametros});
+  getExplorarSeries() {
+    return this.http.get<ExplorarSerieInterface>(`${environment.apiUrl}discover/tv`, {params: this.parametros});
   }
 
   getFilme(id) {
-    return this.http.get<any>(`${environment.apiUrl}movie/${id}`, {params: this.parametros});
+    return this.http.get<FilmeInterface>(`${environment.apiUrl}movie/${id}`, {params: this.parametros});
   }
 
   getSerie(id) {
-    return this.http.get<any>(`${environment.apiUrl}tv/${id}`, {params: this.parametros});
+    return this.http.get<SerieInterface>(`${environment.apiUrl}tv/${id}`, {params: this.parametros});
   }
 
 }

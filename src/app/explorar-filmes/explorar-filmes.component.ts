@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EndpointService } from '../shared/services/endpoint.service';
+import { ExplorarFilmesResultsInterface } from '../models/explorar.filmes.results';
 
 @Component({
   selector: 'app-explorar-filmes',
@@ -8,10 +9,11 @@ import { EndpointService } from '../shared/services/endpoint.service';
 })
 export class ExplorarFilmesComponent implements OnInit {
 
-  filmes: [];
+  filmes: ExplorarFilmesResultsInterface;
 
   constructor(private endpoint: EndpointService) {
-    this.endpoint.getDescobirFilmes().subscribe(res => this.filmes = res.results);
+    this.endpoint.getExplorarFilmes()
+    .subscribe(res => this.filmes = res.results);
   }
 
   ngOnInit() {

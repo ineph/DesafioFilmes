@@ -1,8 +1,20 @@
-<h1>{{serie ? serie.name : ''}}</h1>
-<br>
-Popularidade: {{serie ? serie.popularity : ''}}<br>
-Nota: {{serie ? serie.vote_average : ''}}<br>
-Avaliado {{serie ? serie.vote_count : ''}} Vezes<br>
-<br>
-Resumo: {{serie ? serie.overview : ''}}<br>
-<img [src]="'https://image.tmdb.org/t/p/w500' + (serie ? serie.poster_path : '')" [alt]="(serie ? serie.title : '')">
+<div class="container">
+  <h1>{{serie ? serie.name : ''}}</h1>
+  <br>
+
+  <div>
+    Popularidade: {{serie ? serie.popularity : ''}}<br>
+    Nota: <a [ngStyle]="{'color' : serie.vote_average >= 8 ?
+                         'green' : serie.vote_average >= 5 ?
+                          'gold' : 'red'}">{{serie ? serie.vote_average : ''}}</a><br>
+    Avaliado {{serie ? serie.vote_count : ''}} Vezes<br>
+    <br>
+    
+    <!-- {{serie.overview.length ? 'Resumo: ' + serie.overview : ''}}<br> -->
+    <div id="titulo-resumo">Resumo:</div>
+    {{serie ? serie.overview : 'Resumo não disponível'}}<br>
+  </div>
+  <img
+    [src]="'https://image.tmdb.org/t/p/w500' + (serie ? serie.poster_path : '')"
+    [alt]="(serie ? serie.title : '')">
+</div>

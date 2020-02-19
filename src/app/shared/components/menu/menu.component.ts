@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { EndpointService } from '../../services/endpoint.service';
-import { PesquisaService } from '../../services/pesquisa.service';
 
 @Component({
   selector: 'app-menu',
@@ -13,9 +12,7 @@ export class MenuComponent implements OnInit {
   resultadosPesquisa: [];
   tipoPesquisa = '';
 
-  constructor(
-    private endpoint: EndpointService,
-    public pesquisaService: PesquisaService) {}
+  constructor(private endpoint: EndpointService) {}
 
   ngOnInit() {
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EndpointService } from '../shared/services/endpoint.service';
 import { ActivatedRoute } from '@angular/router';
+import { SerieInterface } from '../models/serie.interface';
 
 @Component({
   selector: 'app-serie',
@@ -9,13 +10,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SerieComponent implements OnInit {
 
-  serie = [];
+  serie = new SerieInterface();
 
   constructor(
     endpoint: EndpointService,
     rotaAtiva: ActivatedRoute) {
-      rotaAtiva.params.subscribe(rota => endpoint.getSerie(rota.id).subscribe(res => console.log(
-        this.serie = res)));
+
+      rotaAtiva.params.subscribe(rota => {
+        endpoint.getSerie(rota.id).subscribe(
+          res => {
+            console.log(this.serie = res);
+          }
+        );
+      }
+      );
      }
 
   ngOnInit() {

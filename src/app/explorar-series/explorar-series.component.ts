@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EndpointService } from '../shared/services/endpoint.service';
+import { ExplorarSeriesResultsInterface } from '../models/explorar.series.results';
 
 @Component({
   selector: 'app-explorar-series',
@@ -8,11 +9,11 @@ import { EndpointService } from '../shared/services/endpoint.service';
 })
 export class ExplorarSeriesComponent implements OnInit {
 
-  series = [];
+  series: ExplorarSeriesResultsInterface;
 
   constructor(private endpoint: EndpointService) {
-    this.endpoint.getDescobrirSeries().subscribe(res => console.log(
-     this.series = res.results));
+    this.endpoint.getExplorarSeries()
+    .subscribe(res => this.series = res.results);
 
    }
 

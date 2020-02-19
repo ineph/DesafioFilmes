@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EndpointService } from '../shared/services/endpoint.service';
 import { ActivatedRoute } from '@angular/router';
+import { FilmeInterface } from '../models/filme.interface';
 
 @Component({
   selector: 'app-filme',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FilmeComponent implements OnInit {
 
-  filme: [];
+  filme = new FilmeInterface();
 
   constructor(
     endpoint: EndpointService,
@@ -19,8 +20,9 @@ export class FilmeComponent implements OnInit {
         endpoint.getFilme(rota.id).subscribe(
           res => {
             console.log(this.filme = res);
-          });
-        }
+          }
+        );
+      }
       );
     }
 
