@@ -18,9 +18,14 @@ export class EndpointService {
 
   constructor(private http: HttpClient) {}
 
-  getPesquisar(pesquisa) {
+  getPesquisarFilme(pesquisa) {
     return this.http.get<any>(
       `${environment.apiUrl}search/movie`, {params: this.formatarParametros(pesquisa)});
+  }
+
+  getPesquisarSerie(pesquisa) {
+    return this.http.get<any>(
+      `${environment.apiUrl}search/tv`, {params: this.formatarParametros(pesquisa)});
   }
 
   getDescobirFilmes() {

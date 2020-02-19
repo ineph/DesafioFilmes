@@ -1,7 +1,11 @@
-<ul class="list-unstyled">
-  <li *ngFor="let filme of filmes">
-    <a [routerLink]="'/filme/'+filme.id">{{filme.title}} ({{filme.release_date}})<br>
-      <img [src]="'https://image.tmdb.org/t/p/w500'+filme.backdrop_path" [alt]="filme.title">
-    </a>
-  </li>
-</ul>
+<div class="master">
+ <ul class="list-unstyled">
+    <li *ngFor="let filme of filmes">
+      <br>
+      <a class="titulo" [routerLink]="'/filme/'+filme.id">{{filme.title}} ({{filme.release_date}})<br>
+        <img [src]="'https://image.tmdb.org/t/p/w500'+filme.backdrop_path" [alt]="filme.title">
+      </a>
+      <br>
+    </li>
+  </ul>
+</div>

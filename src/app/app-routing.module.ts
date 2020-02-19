@@ -4,6 +4,7 @@ import { ExplorarFilmesComponent } from './explorar-filmes/explorar-filmes.compo
 import { ExplorarSeriesComponent } from './explorar-series/explorar-series.component';
 import { FilmeComponent } from './filme/filme.component';
 import { SerieComponent } from './serie/serie.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,15 @@ const routes: Routes = [
   {
     path: 'serie/:id',
     component: SerieComponent
+  },
+  {
+    path: '404',
+    component: NotFoundComponent
+  },
+  {
+    path: '**',
+    redirectTo: '404',
+    pathMatch: 'full'
   }
 ];
 

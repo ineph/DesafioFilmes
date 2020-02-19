@@ -1,7 +1,10 @@
-<ul class="list-unstyled">
-  <li *ngFor="let serie of series">
-    <a [routerLink]="'/serie/'+serie.id">{{serie.name}}<br>
-      <img [src]="'https://image.tmdb.org/t/p/w500'+serie.backdrop_path" [alt]="serie.name">
-    </a>
-  </li>
-</ul>
+<div class="master">
+  <ul class="list-unstyled">
+    <li *ngFor="let serie of series">
+      <br>
+      <a [routerLink]="'/serie/'+serie.id">{{serie.name}}<br>
+        <img [src]="'https://image.tmdb.org/t/p/w500'+serie.backdrop_path" [alt]="serie.name">
+      </a>
+    </li>
+  </ul>
+</div>

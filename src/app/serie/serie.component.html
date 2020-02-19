@@ -1,1 +1,8 @@
-<p>serie works!</p>
+<h1>{{serie ? serie.name : ''}}</h1>
+<br>
+Popularidade: {{serie ? serie.popularity : ''}}<br>
+Nota: {{serie ? serie.vote_average : ''}}<br>
+Avaliado {{serie ? serie.vote_count : ''}} Vezes<br>
+<br>
+Resumo: {{serie ? serie.overview : ''}}<br>
+<img [src]="'https://image.tmdb.org/t/p/w500' + (serie ? serie.poster_path : '')" [alt]="(serie ? serie.title : '')">

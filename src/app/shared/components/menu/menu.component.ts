@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EndpointService } from '../../services/endpoint.service';
 
-import { FormBuilder } from '@angular/forms';
+import { EndpointService } from '../../services/endpoint.service';
+import { PesquisaService } from '../../services/pesquisa.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,27 +10,36 @@ import { FormBuilder } from '@angular/forms';
 })
 export class MenuComponent implements OnInit {
 
-  inputPesquisa = '';
-  pesquisaForm;
+  resultadosPesquisa: [];
+  tipoPesquisa = '';
 
   constructor(
     private endpoint: EndpointService,
-    private formBuilder: FormBuilder) {
-
-      this.pesquisaForm = this.formBuilder.group({
-        pesquisa: ''
-      });
-    }
+    public pesquisaService: PesquisaService) {}
 
   ngOnInit() {
   }
 
-  pesquisar(inputPesquisa) {
-    console.log(inputPesquisa);
-    this.endpoint.getPesquisar(inputPesquisa.pesquisa).subscribe(res => console.log(res)
-    );
+  selecaoPesquisa(tipo) {
+    console.log(this.tipoPesquisa = tipo);
   }
 
+  pesquisar(inputPesquisa: string, tipo: string) {
+    tipo = this.tipoPesquisa;
+    if (inputPesquisa.length > 1 ) {
 
+      if (tipo === 'serie') {
+        console.log('input pesquisa: ', inputPesquisa);
+
+        this.endpoint.getPesquisarSerie(inputPesquisa)
+        .subscribe(resPes => console.log(this.resultadosPesquisa = resPes.results));
+      } else {
+        console.log('input pesquisa: ', inputPesquisa);
+
+        this.endpoint.getPesquisarFilme(inputPesquisa)
+        .subscribe(resPes => console.log(this.resultadosPesquisa = resPes.results));
+      }
+    }
+  }
 
 }
