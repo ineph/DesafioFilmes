@@ -11,6 +11,7 @@ import { FilmeInterface } from '../models/filme.interface';
 export class FilmeComponent implements OnInit {
 
   filme = new FilmeInterface();
+  generos: any;
 
   constructor(
     endpoint: EndpointService,
@@ -19,7 +20,8 @@ export class FilmeComponent implements OnInit {
       rotaAtiva.params.subscribe(rota => {
         endpoint.getFilme(rota.id).subscribe(
           res => {
-            console.log(this.filme = res);
+            this.filme = res;
+            this.generos = res.genres;
           }
         );
       }

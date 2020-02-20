@@ -1,3 +1,29 @@
-#titulo-resumo {
+#principal {
+  text-align: center;
+}
+
+.detalhes a {
   font-weight: bold;
+}
+
+.detalhes {
+  padding: 20px;
+}
+
+.generos { 
+  display: inline;
+  list-style: none;
+  padding: 0px;
+}
+
+.generos li {
+  display: inline;
+}
+
+.generos li::after {
+  content: ",";
+}
+
+.generos li:last-child::after {
+  content: "";
 }

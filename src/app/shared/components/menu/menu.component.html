@@ -4,18 +4,25 @@
       <a class="navbar-brand" href="">DesafioFilmes</a>
 
       <div class="btn-group" dropdown>
-        <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+        <button
+          id="button-basic"
+          dropdownToggle type="button"
+          class="btn btn-primary dropdown-toggle"
           aria-controls="dropdown-basic">
           Explorar <span class="caret"></span>
         </button>
-        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+        <ul
+          id="dropdown-basic"
+          *dropdownMenu class="dropdown-menu"
+          role="menu"
+          aria-labelledby="button-basic">
           <li role="menuitem"><a class="dropdown-item" routerLink="/explorar/filmes">Filmes</a></li>
           <li role="menuitem"><a class="dropdown-item" routerLink="/explorar/series">Series</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-3 form-inline ng-untouched ng-pristine ng-valid">
       <div class="pesquisa">
         <div class="pesquisa-form">
           <input class="form-control" type="text" placeholder="Pesquisar..."
@@ -24,7 +31,9 @@
             (mouseleave)=" resultadosPesquisa = unsigned">
             <li class="list-group-item" *ngFor="let resultado of resultadosPesquisa">
               <a [routerLink]="(tipoPesquisa === 'serie' ? '/serie/' : '/filme/') + resultado.id">
-                {{tipoPesquisa === 'serie' ? resultado.name : resultado.title}}
+                {{tipoPesquisa === 'serie' ?
+                  resultado.name + (resultado.first_air_date ? ' (' + (resultado.first_air_date | date : 'yyyy') + ')' : '' ) :
+                   resultado.title + (resultado.release_date ? ' (' + (resultado.release_date | date : 'yyyy') + ')' : '') }}
               </a>
             </li>
           </ul>
@@ -32,7 +41,7 @@
       </div>    
 
       <div>
-        <select class="tipo-pesquisa browser-default custom-select" (change)="selecaoPesquisa($event.target.value)">
+        <select class="tipo-pesquisa browser-default custom-select my-2 my-sm-0" (change)="selecaoPesquisa($event.target.value)">
           <option value="" disabled selected>em...</option>
           <option value="serie">Series</option>
           <option value="filme">Filmes</option>

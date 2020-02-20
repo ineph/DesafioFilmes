@@ -1,20 +1,34 @@
-<div class="container">
-  <h1>{{serie ? serie.name : ''}}</h1>
-  <br>
-
-  <div>
-    Popularidade: {{serie ? serie.popularity : ''}}<br>
-    Nota: <a [ngStyle]="{'color' : serie.vote_average >= 8 ?
-                         'green' : serie.vote_average >= 5 ?
-                          'gold' : 'red'}">{{serie ? serie.vote_average : ''}}</a><br>
-    Avaliado {{serie ? serie.vote_count : ''}} Vezes<br>
-    <br>
-    
-    <!-- {{serie.overview.length ? 'Resumo: ' + serie.overview : ''}}<br> -->
-    <div id="titulo-resumo">Resumo:</div>
-    {{serie ? serie.overview : 'Resumo não disponível'}}<br>
+<div class="container-fluid px-lg-5">
+  <div class="row">
+    <div id="principal" class="col-sm">
+      <h1>{{serie ? serie.name : ''}}</h1>
+      <br>
+      <img class="w-25 w3-image" [src]="'https://image.tmdb.org/t/p/w500' + (serie ? serie.poster_path : '')"
+        [alt]="(serie ? serie.title : '')">
+    </div>
   </div>
-  <img
-    [src]="'https://image.tmdb.org/t/p/w500' + (serie ? serie.poster_path : '')"
-    [alt]="(serie ? serie.title : '')">
+  <div class="row">
+    <div class="col">
+      <h3>Resumo:</h3>
+      {{serie.overview ? serie.overview : 'Resumo não disponível'}}<br>
+    </div>
+  
+    <div class="col detalhes">
+      <a>Popularidade: </a> {{serie ? serie.popularity : ''}}<br>
+      <a>Nota: </a><a [ngStyle]="{'color' : serie.vote_average >= 8 ?
+            'green' : serie.vote_average >= 5 ?
+            'gold' : 'red'}">{{serie ? serie.vote_average : ''}}</a><br>
+      Avaliado {{serie ? serie.vote_count : ''}} Vezes<br>
+      <a>Primeiro episódio: </a>{{serie.first_air_date ? (serie.first_air_date | date) : 'Não disponível' }}<br>
+      <a>Último episódio: </a>{{serie.last_air_date ? (serie.last_air_date | date) : 'Não disponível' }}<br>
+      <br>
+      <a>Genero(s): </a>
+      <ul class="generos" >
+        <li *ngFor="let genero of generos">
+          {{genero.name}}
+        </li>
+      </ul>
+      <br>
+    </div>
+  </div>
 </div>

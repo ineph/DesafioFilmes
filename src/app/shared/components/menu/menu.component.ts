@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
   }
 
   selecaoPesquisa(tipo) {
-    console.log(this.tipoPesquisa = tipo);
+    this.tipoPesquisa = tipo;
   }
 
   pesquisar(inputPesquisa: string, tipo: string) {
@@ -26,15 +26,12 @@ export class MenuComponent implements OnInit {
     if (inputPesquisa.length > 1 ) {
 
       if (tipo === 'serie') {
-        console.log('input pesquisa: ', inputPesquisa);
 
         this.endpoint.getPesquisarSerie(inputPesquisa)
-        .subscribe(resPes => console.log(this.resultadosPesquisa = resPes.results));
+        .subscribe(resPes => this.resultadosPesquisa = resPes.results);
       } else {
-        console.log('input pesquisa: ', inputPesquisa);
-
         this.endpoint.getPesquisarFilme(inputPesquisa)
-        .subscribe(resPes => console.log(this.resultadosPesquisa = resPes.results));
+        .subscribe(resPes => this.resultadosPesquisa = resPes.results);
       }
     }
   }

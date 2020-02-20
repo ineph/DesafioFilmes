@@ -1,17 +1,32 @@
-<div class="container">
-  <h1>{{filme ? filme.title : ''}}</h1>
-  <small>{{filme ? (filme.tagline ? filme.tagline : ''): ''}}</small><br>
-  <br>
-  <div>
-    Popularidade: {{filme ? filme.popularity : ''}}<br>
-    Nota: <a
-          [ngStyle]="{'color' : filme.vote_average >= 8 ?
-                      'green' : filme.vote_average >= 5 ?
-                      'gold' : 'red'}">{{filme ? filme.vote_average : ''}}</a><br>
-    Avaliado {{filme ? filme.vote_count : ''}} Vezes<br>
-    <br>
-    <div id="titulo-resumo">Resumo:</div>
-    {{filme ? filme.overview : 'Resumo não disponível'}}<br>
+<div class="container-fluid px-lg-5">
+  <div class="row">
+    <div class="col">
+      <h1>{{filme ? filme.title : ''}}</h1>
+      <small>{{filme ? (filme.tagline ? filme.tagline : ''): ''}}</small><br>
+      <br>
+      <img [src]="'https://image.tmdb.org/t/p/w500' + (filme ? filme.poster_path : '')"
+        [alt]="(filme ? filme.title : '')">
+    </div>
+
+    <div class="col-6">
+      <a>Popularidade: </a>{{filme ? filme.popularity : ''}}<br>
+      <a>Nota: </a>
+      <a [ngStyle]="{'color' : filme.vote_average >= 8 ?
+      'green' : filme.vote_average >= 5 ?
+      'gold' : 'red'}">{{filme ? filme.vote_average : ''}}</a><br>
+      Avaliado {{filme ? filme.vote_count : ''}} Vezes<br>
+      <a>Lançamento:</a> {{filme.release_date ? (filme.release_date | date) : 'Não disponível'}} <br>
+      <br>
+      <div class="titulo-resumo">Resumo: </div>
+      {{filme.overview ? filme.overview : 'Resumo não disponível'}}<br>
+      <div><br>
+        <a class="titulo">Gênero(s): </a>
+        <ul class="generos">
+          <li *ngFor="let genero of generos">
+            {{genero.name}}
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <img [src]="'https://image.tmdb.org/t/p/w500' + (filme ? filme.poster_path : '')" [alt]="(filme ? filme.title : '')">
 </div>

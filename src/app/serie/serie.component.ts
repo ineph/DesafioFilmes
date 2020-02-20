@@ -11,6 +11,7 @@ import { SerieInterface } from '../models/serie.interface';
 export class SerieComponent implements OnInit {
 
   serie = new SerieInterface();
+  generos: any;
 
   constructor(
     endpoint: EndpointService,
@@ -19,7 +20,8 @@ export class SerieComponent implements OnInit {
       rotaAtiva.params.subscribe(rota => {
         endpoint.getSerie(rota.id).subscribe(
           res => {
-            console.log(this.serie = res);
+            this.serie = res;
+            this.generos = res.genres;
           }
         );
       }
